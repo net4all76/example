@@ -9,7 +9,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Review  current application 'pid' "
 
-CURRENT_PID=$(pgrep  -fl springboot2-webservice  | grep jar | awk '{print $1}' )
+CURRENT_PID=$(pgrep  -fl $PROJECT_NAME  | grep jar | awk '{print $1}' )
 
 echo "Current application pid : $CURRENT_PID"
 
@@ -35,5 +35,5 @@ echo  "> run  $JAR_NAME "
 
 nohup java -jar \
         -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
-        -Dspring.profiles.active=real   \
-        $JAR_NAME >  $REPOSITORY/nohup.out 2>&1 &
+        -Dspring.profiles.active=real \
+        $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
